@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     string str;
-    float a, c,d;
+    float a, c;
     char b;
     getline(cin, str);
     istringstream stream(str);
@@ -15,11 +15,11 @@ int main()
     {if (b == '*' || b == '/') {
       switch(b) { case '*':
                 stream >> b;
-                a = a * b;
+               c= c * a;
                 break;
             case '/':
                 stream >> b;
-                a = a / b;
+            c = c / a;
                 break;
 }
        
@@ -28,15 +28,15 @@ int main()
      switch(b) {
             case '+':
                 stream >> b;
-                a = a+ b;
+                c = c + a;
                 break;
             case '-':
                 stream >> b;
-                a = a- b;
+                c = c - a;
 break;}
        
         
 
-  }cout << d;
+  }cout << c;
 }
 }
