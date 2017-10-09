@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sstream>
-
+#include <stdlib.h>
 using namespace std;
 
 int main()
@@ -12,8 +12,21 @@ int main()
     istringstream stream(str);
     stream >> c;
     while (stream >> b)
-    {
-        if (b == '+')
+    {if (b == '*' || b == '/') {
+      if (b == '*')
+        {
+            stream >> a;
+            c = c * a;
+        }
+        else if (b == '/')
+        {
+            stream >> a;
+            c = c / a;
+        } 
+       
+    } else if (b == '+' || b == '-') {
+  
+      if (b == '+')
         {
             stream >> a;
             c = c + a;
@@ -22,10 +35,9 @@ int main()
         {
             stream >> a;
             c = c - a;
-        }
-    }
-     
-    cout << c;
-    return 0;
+}
+        
 
+  }cout << c;
+}
 }
