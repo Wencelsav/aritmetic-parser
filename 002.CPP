@@ -1,4 +1,4 @@
-//
+#include "stdafx.h"
 #include <iostream>
 
 #include <sstream>
@@ -17,7 +17,7 @@ int main()
 
 	float a, c;
 
-	char b;
+	char b, d;
 
 	getline(cin, str);
 
@@ -28,61 +28,61 @@ int main()
 	while (stream >> b)
 
 	{
-		if (b == '*' || b == '/') {
 
-			if (b == '*')
+		if (b == '+')
 
-			{
+		{
 
-				stream >> a;
+			stream >> a;
 
-				c = c * a;
-
-			}
-
-			else if (b == '/')
-
-			{
-
-				stream >> a;
-
-				c = c / a;
-
-			}
-
-
+			c = c + a;
 
 		}
-		else if (b == '+' || b == '-') {
 
+		else if (b == '-')
 
+		{
 
-			if (b == '+')
+			stream >> a;
 
-			{
+			c = c - a;
 
-				stream >> a;
-
-				c = c + a;
-
-			}
-
-			else if (b == '-')
-
-			{
-
-				stream >> a;
-
-				c = c - a;
-
-			}
-
-
-
-
-
-		}cout << c << endl;
+		}
 
 	}
+
+	while (stream >> d)
+
+	{
+		if (b == '*')
+
+		{
+
+			stream >> a;
+
+			c = c * a;
+
+		}
+
+		else if (b == '/')
+
+		{
+
+			stream >> a;
+
+			c = c / a;
+
+		}
+
+
+
+
+
+	}
+
+
+
+
+		cout << c << endl;
 
 }
