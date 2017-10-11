@@ -11,8 +11,6 @@ int main()
 {
     double n;
  
-    setlocale(LC_ALL, "Rus");
- 
     cout << "Введите выражение: ";
  
     n = expr();
@@ -128,7 +126,7 @@ double expr()
         c = cin.get();
  
         while (c == ' ')
-            c = std::cin.get();
+            c =cin.get();
  
         switch (c)
         {
@@ -174,7 +172,7 @@ double brackets()
         if (c != ')')
         {
             cout << "Неверная расстановка скобок!" << endl;
-            exit(-1);
+
         }
  
         return result;
