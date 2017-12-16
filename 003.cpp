@@ -1,135 +1,74 @@
 #include <iostream>
+#include <sstream>
 
-using namespace std;
-
-
-
-
-double number()
-
-{
-
-	int a = 0;
-	for (;;)
-
+	using namespace std;
+  
+  
+	int main()
 	{
+		
+		double a;
+		double* b = (double*) new double;
+		char* op = (char*) new char;
+		string s;
+		
+		getline(cin, s);
+		istringstream stream(s);
+		stream >> *b;
 
-		char c = cin.get();
-		if ((c >= '0') && (c <= '9'))
 
-		{
-			a = a * 10 + (c - '0');
+		char oper;
+		int j = 0;
+
+		while (stream >> oper) {
+			switch (oper) {
+
+				case '+':
+					if (stream >> a) {
+						op = (char*)realloc(op, sizeof(char)*(j + 1));
+						*(op + j) = oper;
+					}
+					j++;
+					b = (double*)realloc(b, sizeof(double)*(j + 1) );
+					*(b + j) = a;
+					break;
+
+				case '-':
+					if (stream >> a) {
+						op = (char*)realloc(op, sizeof(char)*(j + 1));
+						*(op + j) = oper;
+					}
+					j++;
+					b = (double*)realloc(b, sizeof(double)*(j + 1));
+					*(b + j) = a;
+					break;
+
+				case '*':
+					stream >> a;
+					*(b + j) = (*(b + j)) * a;
+					break;
+
+				case '/':
+					stream >> a;
+					*(b + j) = (*(b + j)) / a;
+					break;
+			}
 		}
-		else
 
-		{
+		double res = *b;
 
-			cin.putback(c);
-
-			return a;
-
+		for (int i = 0; i < j + 1; i++) {
+			switch (*(op + i)) {
+			case '+':
+				res += *(b + i + 1); break;
+			case '-':
+				res -= *(b + i + 1); break;
+			}
 		}
 
+		cout << res << endl;
+
+		cin.get();
+		cin.get();
+		return 0;
 	}
-
-}
-
-
-double multdiv()
-
-{
-
-	double x = number();
-
-	for (;;)
-
-	{
-
-		char c = cin.get();
-
-		switch (c)
-
-		{
-
-		case '*':
-
-			x = x*number();
-
-			break;
-
-		case '/':
-
-			x = x / number();
-
-			break;
-
-		default:
-
-			cin.putback(c);
-
-			return x;
-		}
-
-	}
-
-}
-
-
-
-
-double addsub()
-
-{
-
-	double x = multdiv();
-	for (;;)
-
-	{
-
-		char c = cin.get();
-
-		switch (c)
-
-		{
-
-		case '+':
-
-			x = x + multdiv();
-
-			break;
-
-		case '-':
-
-			x = x - multdiv();
-
-			break;
-
-		default:
-
-			cin.putback(c);
-
-			return x;
-
-		}
-
-	}
-
-}
-
-
-
-
-
-
-
-int main()
-
-{
-
-	double a = addsub();
-
-	cout << a << '\n';
-
-
-
-}
